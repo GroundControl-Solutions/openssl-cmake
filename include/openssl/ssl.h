@@ -1286,6 +1286,9 @@ struct ssl_st
 	int tlsext_status_expected;
 	/* OCSP status request only */
 	STACK_OF(OCSP_RESPID) *tlsext_ocsp_ids;
+#ifdef X509_EXTENSIONS
+#undef X509_EXTENSIONS
+#endif
 	X509_EXTENSIONS *tlsext_ocsp_exts;
 	/* OCSP response received or to be sent */
 	unsigned char *tlsext_ocsp_resp;

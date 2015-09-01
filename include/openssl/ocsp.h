@@ -146,6 +146,10 @@ typedef struct ocsp_signature_st
 	STACK_OF(X509) *certs;
 	} OCSP_SIGNATURE;
 
+// Windows #defines this, but openssl never uses it
+#ifdef OCSP_REQUEST
+#undef OCSP_REQUEST
+#endif
 /*   OCSPRequest     ::=     SEQUENCE {
  *       tbsRequest                  TBSRequest,
  *       optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
@@ -193,6 +197,10 @@ struct ocsp_response_st
 	OCSP_RESPBYTES  *responseBytes;
 	};
 
+// Windows #defines this, but openssl never uses it
+#ifdef X509_NAME
+#undef X509_NAME
+#endif
 /*   ResponderID ::= CHOICE {
  *      byName   [1] Name,
  *      byKey    [2] KeyHash }
@@ -401,6 +409,9 @@ typedef struct ocsp_service_locator_st
 
 OCSP_CERTID *OCSP_CERTID_dup(OCSP_CERTID *id);
 
+#ifdef OCSP_RESPONSE
+#undef OCSP_RESPONSE
+#endif
 OCSP_RESPONSE *OCSP_sendreq_bio(BIO *b, char *path, OCSP_REQUEST *req);
 OCSP_REQ_CTX *OCSP_sendreq_new(BIO *io, char *path, OCSP_REQUEST *req,
 								int maxline);

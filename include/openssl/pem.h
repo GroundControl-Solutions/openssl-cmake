@@ -152,6 +152,9 @@ typedef struct PEM_Encode_Seal_st
 #define PEM_TYPE_MIC_CLEAR      30
 #define PEM_TYPE_CLEAR		40
 
+#ifdef X509_NAME
+#undef X509_NAME
+#endif
 typedef struct pem_recip_st
 	{
 	char *name;
@@ -460,6 +463,9 @@ DECLARE_PEM_rw(X509, X509)
 
 DECLARE_PEM_rw(X509_AUX, X509)
 
+#ifdef X509_CERT_PAIR
+#undef X509_CERT_PAIR
+#endif
 DECLARE_PEM_rw(X509_CERT_PAIR, X509_CERT_PAIR)
 
 DECLARE_PEM_rw(X509_REQ, X509_REQ)

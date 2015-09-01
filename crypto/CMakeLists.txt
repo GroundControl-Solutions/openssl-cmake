@@ -45,7 +45,7 @@ ${CONF}" )
 file( WRITE ${CMAKE_CURRENT_BINARY_DIR}/opensslconf.h.cmake "${CONF}" )
 
 #~2DO: set BUILDINF_DATE to `date LC_ALL=C LC_TIME=C`
-configure_file ( buildinf.h.cmake buildinf.h )
+configure_file ( buildinf.h.cmake buildinf.h ESCAPE_QUOTES )
 
 if( WIN32 AND MINGW AND NOT CYGWIN )
   set( OPENSSL_EXPORT_VAR_AS_FUNCTION true )

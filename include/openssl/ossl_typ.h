@@ -150,6 +150,9 @@ typedef struct X509_algor_st X509_ALGOR;
 typedef struct X509_crl_st X509_CRL;
 typedef struct x509_crl_method_st X509_CRL_METHOD;
 typedef struct x509_revoked_st X509_REVOKED;
+#ifdef X509_NAME
+#undef X509_NAME
+#endif
 typedef struct X509_name_st X509_NAME;
 typedef struct X509_pubkey_st X509_PUBKEY;
 typedef struct x509_store_st X509_STORE;
@@ -196,6 +199,10 @@ typedef int CRYPTO_EX_dup(CRYPTO_EX_DATA *to, CRYPTO_EX_DATA *from, void *from_d
 					int idx, long argl, void *argp);
 
 typedef struct ocsp_req_ctx_st OCSP_REQ_CTX;
+// Windows #defines this, but openssl never uses it
+#ifdef OCSP_RESPONSE
+#undef OCSP_RESPONSE
+#endif
 typedef struct ocsp_response_st OCSP_RESPONSE;
 typedef struct ocsp_responder_id_st OCSP_RESPID;
 
