@@ -39,7 +39,7 @@ if( WIN32 AND NOT CYGWIN AND NOT MINGW )
 endif ( )
 
 if( MINGW )
-  set( CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all" )
+  set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--export-all" )
 endif()
 
 add_subdirectory( crypto )
